@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 const InputComponent = styled.div`
 	input,
@@ -51,15 +53,26 @@ const Input = (props) => {
 					onChange={(event) => setIwai(event.target.value)}
 				/>
 			</InputComponent>
-			<InputComponent>
-				<label>名入れ</label>
-				<textarea
-					className="long"
-					type="text"
-					value={naire}
-					onChange={(event) => setNaire(event.target.value)}
-				/>
-			</InputComponent>
+			<Tabs>
+				<TabList>
+					<Tab>自由入力</Tab>
+					<Tab>連名</Tab>
+				</TabList>
+				<TabPanel>
+					<InputComponent>
+						<label>自由入力</label>
+						<textarea
+							className="long"
+							type="text"
+							value={naire}
+							onChange={(event) => setNaire(event.target.value)}
+						/>
+					</InputComponent>
+				</TabPanel>
+				<TabPanel>
+					<h1>Aboutです</h1>
+				</TabPanel>
+			</Tabs>
 		</div>
 	);
 };
