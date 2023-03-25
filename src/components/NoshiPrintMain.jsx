@@ -3,10 +3,19 @@ import { useReactToPrint } from "react-to-print";
 // import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Print from "./Print";
+import Input from "./input";
 
 import styled from "@emotion/styled";
 
+import Image1 from "../assets/1_musubi.jpg";
+import Image2 from "../assets/2_musubikiri.jpg";
+import Image3 from "../assets/3_butsu.jpg";
+
 const NoshiPrintMain = () => {
+	const [noshiImage, setNoshiImage] = useState(Image1);
+	const [valueKomidashi, setValueKomidashi] = useState("");
+	const [valueIwai, setValueIwai] = useState("");
+	const [valueNaire, setValueNaire] = useState("");
 	const componentRef = useRef();
 
 	const reactToPrintContent = useCallback(() => {
@@ -27,7 +36,6 @@ const NoshiPrintMain = () => {
             height: 100% !important;
             overflow: hidden;
             -webkit-print-color-adjust: exact;
-            zoom: 0.72;
             }
         }
         @media print {
@@ -44,11 +52,31 @@ const NoshiPrintMain = () => {
 	return (
 		<div>
 			<PrintArea>
-				<Print componentRef={componentRef} />
+				<Print
+					componentRef={componentRef}
+					image={noshiImage}
+					komidashi={valueKomidashi}
+					iwai={valueIwai}
+					naire={valueNaire}
+				/>
 			</PrintArea>
 			<Button variant="contained" onClick={handlePrint}>
 				印刷
 			</Button>
+			<Button variant="contained" onClick={() => setNoshiImage(Image1)}>
+				結び
+			</Button>
+			<Button variant="contained" onClick={() => setNoshiImage(Image2)}>
+				結び切り
+			</Button>
+			<Button variant="contained" onClick={() => setNoshiImage(Image3)}>
+				仏事
+			</Button>
+			<Input
+				setValueKomidashi={setValueKomidashi}
+				setValueIwai={setValueIwai}
+				setValueNaire={setValueNaire}
+			/>
 		</div>
 	);
 };

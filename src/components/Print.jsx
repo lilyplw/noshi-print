@@ -2,13 +2,57 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const Print = (props) => {
-	return <Test ref={props.componentRef}>Print</Test>;
-};
+	const Printcomponents = styled.div`
+		width: 100%;
+		height: 100%;
+		background-image: url(${props.image});
+		background-size: 100%;
+		background-repeat: no-repeat;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-family: "Yuji Syuku", serif;
+	`;
 
-const Test = styled.div`
-	background-color: aqua;
-	width: 100%;
-	height: 100%;
-`;
+	const IwaiComponent = styled.div`
+		-ms-writing-mode: tb-rl;
+		writing-mode: vertical-rl;
+		flex-basis: 50%;
+		text-align: center;
+		position: relative;
+		h2 {
+			font-size: 3.6rem;
+		}
+		h3 {
+			position: absolute;
+			top: 34%;
+			left: 120%;
+			transform: translate(-50%, -50%);
+		}
+	`;
+	const NaireComponent = styled.div`
+		-ms-writing-mode: tb-rl;
+		writing-mode: vertical-rl;
+		margin: 10% 0 0 0;
+		flex-basis: 40%;
+		text-align: center;
+		h2 {
+			font-size: 2.2rem;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+		}
+	`;
+	return (
+		<Printcomponents ref={props.componentRef}>
+			<IwaiComponent>
+				<h3>{props.komidashi}</h3>
+				<h2>{props.iwai}</h2>
+			</IwaiComponent>
+			<NaireComponent>
+				<h2>{props.naire}</h2>
+			</NaireComponent>
+		</Printcomponents>
+	);
+};
 
 export default Print;
