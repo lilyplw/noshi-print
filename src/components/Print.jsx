@@ -5,6 +5,7 @@ const Print = (props) => {
 	const Printcomponents = styled.div`
 		width: 100%;
 		height: 100%;
+		color: ${props.textColor};
 		background-image: url(${props.image});
 		background-size: 100%;
 		background-repeat: no-repeat;

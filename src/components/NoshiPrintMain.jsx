@@ -12,6 +12,7 @@ import Image2 from "../assets/2_musubikiri.jpg";
 import Image3 from "../assets/3_butsu.jpg";
 
 const NoshiPrintMain = () => {
+	const [textColor, setTextColor] = useState("#000000");
 	const [noshiImage, setNoshiImage] = useState(Image1);
 	const [valueKomidashi, setValueKomidashi] = useState("");
 	const [valueIwai, setValueIwai] = useState("");
@@ -52,8 +53,13 @@ const NoshiPrintMain = () => {
 		removeAfterPrint: true, // 印刷後に印刷用のiframeを削除する
 	});
 
+	const ButtonClick = (image, color) => {
+		setNoshiImage(image);
+		setTextColor(color);
+	};
+
 	return (
-		<div>
+		<FlexComponent>
 			<PrintArea>
 				<Print
 					componentRef={componentRef}
@@ -64,38 +70,59 @@ const NoshiPrintMain = () => {
 					input={input}
 					uji={valueUji}
 					mei={valueMei}
+					textColor={textColor}
 				/>
 			</PrintArea>
-			<Button variant="contained" onClick={handlePrint}>
-				印刷
-			</Button>
-			<Button variant="contained" onClick={() => setNoshiImage(Image1)}>
-				結び
-			</Button>
-			<Button variant="contained" onClick={() => setNoshiImage(Image2)}>
-				結び切り
-			</Button>
-			<Button variant="contained" onClick={() => setNoshiImage(Image3)}>
-				仏事
-			</Button>
-			<Button variant="contained" onClick={() => setInput(!input)}>
-				{input ? "自由入力" : "連名"}
-			</Button>
+			<InputComponent>
+				<Button variant="contained" onClick={handlePrint}>
+					印刷
+				</Button>
+				<Button
+					variant="contained"
+					onClick={() => ButtonClick(Image1, "#000000")}
+				>
+					結び
+				</Button>
+				<Button
+					variant="contained"
+					onClick={() => ButtonClick(Image2, "#000000")}
+				>
+					結び切り
+				</Button>
+				<Button
+					variant="contained"
+					onClick={() => ButtonClick(Image3, "#A1A3A6")}
+				>
+					仏事
+				</Button>
+				<Button variant="contained" onClick={() => setInput(!input)}>
+					{input ? "自由入力" : "連名"}
+				</Button>
 
-			<Input
-				setValueKomidashi={setValueKomidashi}
-				setValueIwai={setValueIwai}
-				setValueNaire={setValueNaire}
-				input={input}
-				setValueUji={setValueUji}
-				setValueMei={setValueMei}
-			/>
-		</div>
+				<Input
+					setValueKomidashi={setValueKomidashi}
+					setValueIwai={setValueIwai}
+					setValueNaire={setValueNaire}
+					input={input}
+					setValueUji={setValueUji}
+					setValueMei={setValueMei}
+				/>
+			</InputComponent>
+		</FlexComponent>
 	);
 };
 
+const FlexComponent = styled.div`
+	display: flex;
+`;
+
+const InputComponent = styled.div`
+	width: 40%;
+	padding: 40px;
+`;
+
 const PrintArea = styled.div`
-	width: 50%;
+	width: 60%;
 	aspect-ratio: 1.41421356/1;
 `;
 

@@ -4,12 +4,16 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 const InputComponent = styled.div`
+	display: flex;
+	align-items: top;
+	padding: 20px;
 	input,
 	textarea {
 		height: 2.4em;
-		max-width: 1019.5px;
-		width: 100%;
-		margin: 10px 0 30px 0;
+		/* max-width: 1019.5px; */
+		width: 70%;
+		margin: 0;
+		padding: 10px;
 		border-radius: 4px;
 		border: none;
 		box-shadow: 0 0 0 1px #ccc inset;
@@ -25,6 +29,9 @@ const InputComponent = styled.div`
 	}
 	.long {
 		height: 400px;
+	}
+	label {
+		flex-basis: 14%;
 	}
 `;
 
@@ -60,6 +67,7 @@ const Input = (props) => {
 			</InputComponent>
 			{props.input ? (
 				<InputComponent>
+					<label>自由入力</label>
 					<textarea
 						className="long"
 						type="text"
@@ -68,19 +76,25 @@ const Input = (props) => {
 					/>
 				</InputComponent>
 			) : (
-				<InputComponent>
-					<textarea
-						type="text"
-						value={uji}
-						onChange={(event) => setUji(event.target.value)}
-					/>
-					<textarea
-						className="long"
-						type="text"
-						value={mei}
-						onChange={(event) => setMei(event.target.value)}
-					/>
-				</InputComponent>
+				<>
+					<InputComponent>
+						<label>名字</label>
+						<textarea
+							type="text"
+							value={uji}
+							onChange={(event) => setUji(event.target.value)}
+						/>
+					</InputComponent>
+					<InputComponent>
+						<label>名前</label>
+						<textarea
+							className="long"
+							type="text"
+							value={mei}
+							onChange={(event) => setMei(event.target.value)}
+						/>
+					</InputComponent>
+				</>
 			)}
 		</div>
 	);
