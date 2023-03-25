@@ -35,6 +35,11 @@ const Input = (props) => {
 	props.setValueIwai(iwai);
 	const [naire, setNaire] = useState("");
 	props.setValueNaire(naire);
+	const [uji, setUji] = useState("");
+	props.setValueUji(uji);
+	const [mei, setMei] = useState("");
+	props.setValueMei(mei);
+
 	return (
 		<div>
 			<InputComponent>
@@ -53,26 +58,30 @@ const Input = (props) => {
 					onChange={(event) => setIwai(event.target.value)}
 				/>
 			</InputComponent>
-			<Tabs>
-				<TabList>
-					<Tab>自由入力</Tab>
-					<Tab>連名</Tab>
-				</TabList>
-				<TabPanel>
-					<InputComponent>
-						<label>自由入力</label>
-						<textarea
-							className="long"
-							type="text"
-							value={naire}
-							onChange={(event) => setNaire(event.target.value)}
-						/>
-					</InputComponent>
-				</TabPanel>
-				<TabPanel>
-					<h1>Aboutです</h1>
-				</TabPanel>
-			</Tabs>
+			{props.input ? (
+				<InputComponent>
+					<textarea
+						className="long"
+						type="text"
+						value={naire}
+						onChange={(event) => setNaire(event.target.value)}
+					/>
+				</InputComponent>
+			) : (
+				<InputComponent>
+					<textarea
+						type="text"
+						value={uji}
+						onChange={(event) => setUji(event.target.value)}
+					/>
+					<textarea
+						className="long"
+						type="text"
+						value={mei}
+						onChange={(event) => setMei(event.target.value)}
+					/>
+				</InputComponent>
+			)}
 		</div>
 	);
 };

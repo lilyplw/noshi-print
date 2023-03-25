@@ -16,6 +16,9 @@ const NoshiPrintMain = () => {
 	const [valueKomidashi, setValueKomidashi] = useState("");
 	const [valueIwai, setValueIwai] = useState("");
 	const [valueNaire, setValueNaire] = useState("");
+	const [valueUji, setValueUji] = useState("");
+	const [valueMei, setValueMei] = useState("");
+	const [input, setInput] = useState(true);
 	const componentRef = useRef();
 
 	const reactToPrintContent = useCallback(() => {
@@ -58,6 +61,9 @@ const NoshiPrintMain = () => {
 					komidashi={valueKomidashi}
 					iwai={valueIwai}
 					naire={valueNaire}
+					input={input}
+					uji={valueUji}
+					mei={valueMei}
 				/>
 			</PrintArea>
 			<Button variant="contained" onClick={handlePrint}>
@@ -72,10 +78,17 @@ const NoshiPrintMain = () => {
 			<Button variant="contained" onClick={() => setNoshiImage(Image3)}>
 				仏事
 			</Button>
+			<Button variant="contained" onClick={() => setInput(!input)}>
+				{input ? "自由入力" : "連名"}
+			</Button>
+
 			<Input
 				setValueKomidashi={setValueKomidashi}
 				setValueIwai={setValueIwai}
 				setValueNaire={setValueNaire}
+				input={input}
+				setValueUji={setValueUji}
+				setValueMei={setValueMei}
 			/>
 		</div>
 	);

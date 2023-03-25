@@ -42,15 +42,54 @@ const Print = (props) => {
 			word-wrap: break-word;
 		}
 	`;
+
+	const RenmeiComponent = styled.div`
+		-ms-writing-mode: tb-rl;
+		writing-mode: vertical-rl;
+		margin: 5% 0 0 0;
+		flex-basis: 45%;
+		display: flex;
+		/* flex-direction: column; */
+		text-align: center;
+		/* position: relative; */
+
+		.uji {
+			margin: 0 auto 6%;
+			flex-basis: 50%;
+			text-align: end;
+			/* position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%); */
+		}
+		.mei {
+			flex-basis: 50%;
+			text-align: start;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+		}
+	`;
+
 	return (
 		<Printcomponents ref={props.componentRef}>
 			<IwaiComponent>
 				<h3>{props.komidashi}</h3>
 				<h2>{props.iwai}</h2>
 			</IwaiComponent>
-			<NaireComponent>
-				<h2>{props.naire}</h2>
-			</NaireComponent>
+			{props.input ? (
+				<NaireComponent>
+					<h2>{props.naire}</h2>
+				</NaireComponent>
+			) : (
+				<RenmeiComponent>
+					<div className="uji">
+						<h2>{props.uji}</h2>
+					</div>
+					<div className="mei">
+						<h2>{props.mei}</h2>
+					</div>
+				</RenmeiComponent>
+			)}
 		</Printcomponents>
 	);
 };
