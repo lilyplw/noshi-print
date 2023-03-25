@@ -28,7 +28,7 @@ const InputComponent = styled.div`
 		box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
 	}
 	.long {
-		height: 400px;
+		height: 200px;
 	}
 	label {
 		flex-basis: 14%;
