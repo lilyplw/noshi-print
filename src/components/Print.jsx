@@ -4,7 +4,8 @@ import styled from "@emotion/styled";
 const Print = (props) => {
 	const Printcomponents = styled.div`
 		width: 100%;
-		height: 100%;
+		height: auto;
+		aspect-ratio: 1.41421356/1;
 		color: ${props.textColor};
 		background-image: url(${props.image});
 		background-size: 100%;
