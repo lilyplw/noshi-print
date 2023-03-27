@@ -14,6 +14,8 @@ const Print = (props) => {
 		flex-direction: column;
 		align-items: center;
 		font-family: "Yuji Syuku", serif;
+		white-space: pre-wrap;
+		word-wrap: break-word;
 	`;
 
 	const IwaiComponent = styled.div`
@@ -67,8 +69,6 @@ const Print = (props) => {
 		.mei {
 			flex-basis: 50%;
 			text-align: start;
-			white-space: pre-wrap;
-			word-wrap: break-word;
 		}
 	`;
 
