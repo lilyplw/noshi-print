@@ -1,4 +1,3 @@
-import "./App.css";
 import NoshiPrintMain from "./components/NoshiPrintMain";
 
 function App() {
